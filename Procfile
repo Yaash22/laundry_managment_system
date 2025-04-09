@@ -1,2 +1,3 @@
-web: gunicorn laundry_management_system.wsgi:application
+web: gunicorn laundry.wsgi:application
+
 
