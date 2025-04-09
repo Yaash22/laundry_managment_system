@@ -19,12 +19,9 @@ def userlogin(request):
         password = request.POST.get('password')
         user = authenticate(request, username=username, password=password)
         if user is not None:
-            if user.profile.is_verified:
-                login(request, user)
-                return redirect('index')
-            else:
-                error_message = "User is not verified. Please verify your account."
-                return render(request, 'userlogin.html', {'messages': error_message})
+            # Removed verification check
+            login(request, user)
+            return redirect('index')
         else:
             error_message = "Invalid username or password"
             return render(request, 'userlogin.html', {'messages': error_message})
